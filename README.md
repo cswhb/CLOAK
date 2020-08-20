@@ -20,6 +20,6 @@ CLOAK Setup,Compiling,Configuration and How to test
 * arg1 and arg2 are used to enable our climber and WPRM schemes.
 
 **3.Result**
-The hotness deviation result and endurance result are recorded by defenselayer_YYY_climber.py and YYYmm_climber.py in \*.dat files
+&#160; &#160; &#160; &#160; The hotness deviation result and endurance result are recorded by defenselayer_YYY_climber.py and YYYmm_climber.py in \*.dat files
 
 
