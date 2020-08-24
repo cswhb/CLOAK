@@ -25,7 +25,7 @@ class AcListGenerator:
     def __init__(self, type1, areasize, attackpp,climberenable, randomenable, stallenable):
         if areasize <= 2:
             print('error:memorysize too small')
-        self.type = type
+        self.type = type1
         self.areasize = areasize
         self.attackpp = attackpp
         self.maplist = [0 for x in range(self.areasize)]#
@@ -80,7 +80,6 @@ class AcListGenerator:
                 sortedlist =sorted(self.visittable, key = lambda x:x[1])
                 hotaddr = self.gethotaddr(sortedlist)
                 coldaddrpair = self.getcoldaddr(sortedlist)
-                print('attackaddr:%d'%(coldaddrpair[0]))
                 for i in range(attacksize):
                     hotaddr = sortedlist[-1-i][0]
                     if coldaddrpair[1] - i >= 0:

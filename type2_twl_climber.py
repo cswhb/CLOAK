@@ -22,10 +22,10 @@ climbershift = 10
 attacksize = 1024
 ##########################################################
 class AcListGenerator:
-    def __init__(self, type, areasize, attackpp,climberenable, randomenable, stallenable):
+    def __init__(self, type1, areasize, attackpp,climberenable, randomenable, stallenable):
         if areasize <= 2:
             print('error:memorysize too small')
-        self.type = type
+        self.type = type1
         self.areasize = areasize
         self.attackpp = attackpp
         self.maplist = [0 for x in range(self.areasize)]#

@@ -85,7 +85,6 @@ class AcListGenerator:
                 sortedlist =sorted(self.visittable, key = lambda x:x[1])
                 hotaddr = self.gethotaddr(-1,sortedlist)
                 coldaddrpair = self.getcoldaddr(-1,sortedlist)
-                print('attackaddr:%d'%(coldaddrpair[0]))
                 for i in range(attacksize):
                     hotaddr = sortedlist[-1-i][0]
                     if coldaddrpair[1] - i >= 0:

@@ -278,7 +278,6 @@ class memorymodel:
             return (-1,[self.bloomfilter1.voidlist,self.bloomfilter2.voidlist],self.voidreturn)
         if self.totalcount == cyclethreshold:
             self.totalcount = 0
-            print('maxSL:%d'%(self.maxSL))
         if self.totalcount == remapthreshold:
             self.start = 1
             #self.totalcount = 0
@@ -398,8 +397,6 @@ class memorymodel:
                     else:
                         self.climberstart[lifenowlist[index][0]] = 1
                     if len(lifenowlist) - 1 - mapindex == 0:
-                        print('lastweakaddrwrite:%d'%(self.bloomfilter1.getcount(self.map2weakaddr)))
-                        print('map2weakaddr:%d'%(bemapaddr))
                         self.map2wearaddr = bemapaddr
                         #print('map2weakaddr:%d'%(bemapaddr))
                     self.rank2addr[bemapaddr] = len(lifenowlist) - 1 - mapindex

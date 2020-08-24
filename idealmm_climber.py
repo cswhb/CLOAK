@@ -172,7 +172,6 @@ class memorymodel:
         if self.lifelist[addr][1] < 0:
             return (-1, self.visitcount, self.maplist)
         if self.totalcount == cyclethreshold:
-            print('maxSL:%d'%(self.maxSL))
             self.totalcount = 0
         if self.totalcount == remapthreshold:
             self.start = 1
@@ -213,8 +212,6 @@ class memorymodel:
                     maxlife2 = self.lifelist2[i][1]
                     maxi = i
             zeropoint = 0
-            print('hottestaddr:%d'%(visitsortedlist[len(visitsortedlist) - 1][0]))
-            print('hottestpage:%d'%(self.maplist[visitsortedlist[len(visitsortedlist) - 1][0]]))
             for i in range(len(visitsortedlist)):
                 if visitsortedlist[len(visitsortedlist) - 1 - i][1] == 0 and zeropoint < len(visitsortedlist) - 1 - i:
                     zeropoint = len(visitsortedlist) - 1 - i
@@ -232,8 +229,6 @@ class memorymodel:
                 else:
                     vindex = zeropoint - (len(visitsortedlist) - 1 - i)
                 if len(visitsortedlist) - 1 - i == 0:
-                    print('lastweakaddrwrite:%d'%(self.visitcount[self.map2weakaddr][1]))
-                    print('map2weakaddr:%d'%(visitsortedlist[vindex][0]))
                     self.map2wearaddr = visitsortedlist[vindex][0]
                 self.rank2addr[visitsortedlist[vindex][0]] = len(visitsortedlist) - 1 - i
                 if self.randomenable == 1 and index < (((int(self.maxpagenums/2))>>self.randomshift)<<self.randomshift):
