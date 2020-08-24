@@ -2,6 +2,7 @@
 import random
 import numpy as np
 import defenselayer_ideal_climber as dl #
+import sys
 ##############################
 ##############################
 tracepath = 'trace.dat'

@@ -152,7 +152,7 @@ class memorymodel:
         self.randompath = ['', 'random_']
         self.climberpath = ['', 'climber_']
         self.stallpath = ['', 'stall_']
-        self.endlifepath = 'type' + str(self.attacktype)+'_bwlmm_climber_'+str(climbershift)+'_'+self.climberpath[self.climberenable]+self.randompath[self.randomenable] + \
+        self.endlifepath = 'type' + str(self.attacktype)+'_bwlmm_'+str(climbershift)+'_'+self.climberpath[self.climberenable]+self.randompath[self.randomenable] + \
                             self.stallpath[self.stallenable]+'endlife.dat'
         self.lifelist = [[0,0] for y in range(len(x))]
         self.lifelist2 = [[0,0] for y in range(len(x))]
@@ -206,6 +206,8 @@ class memorymodel:
         self.rank2addr = [0 for  y in range(self.maxpagenums)]
         self.climberstart = [1 for  y in range(self.maxpagenums)]
         self.maxSL = 0
+        self.isvisited = [0 for  y in range(self.maxpagenums)]
+        self.visitedback = [0 for  y in range(self.maxpagenums)]
         self.map2weakaddr = self.maxpagenums - 1 
     def getrank2addr(self):
         return self.rank2addr
@@ -261,6 +263,7 @@ class memorymodel:
             self.disclimbtime = self.disclimbtime + 1
         return 0
     def access(self,addr_temp):
+        self.isvisited[addr_temp] = self.isvisited[addr_temp] + 1
         self.totaltime = self.totaltime + 1
         addr = self.maplist[addr_temp]
         if self.totalcount < remapthreshold:
@@ -301,6 +304,8 @@ class memorymodel:
             rank2 = self.bloomfilter2.rank()
             lifenowlist = sorted(self.lifelist, key = lambda x:x[1])
             for i in range(len(lifenowlist)):
+                self.visitedback[i] = self.isvisited[i]
+                self.isvisited[i] = 0
                 self.sortednow[i] = lifenowlist[i][0]
             maxwearrate = 0.0
             wearrate = 0.0

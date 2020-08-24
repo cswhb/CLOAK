@@ -31,7 +31,7 @@ class memorymodel:
         self.randompath = ['', 'random_']
         self.climberpath = ['', 'climber_']
         self.stallpath = ['', 'stall_']
-        self.endlifepath = 'type' + str(self.attacktype)+'_idealmm_climber_'+str(climbershift)+'_'+self.climberpath[self.climberenable]+self.randompath[self.randomenable] + \
+        self.endlifepath = 'type' + str(self.attacktype)+'_idealmm_'+str(climbershift)+'_'+self.climberpath[self.climberenable]+self.randompath[self.randomenable] + \
                             self.stallpath[self.stallenable]+'endlife.dat'
         np.random.seed(0)
         print("gen life distribution begin")
@@ -91,6 +91,7 @@ class memorymodel:
         self.disclimbtime =0
         self.rank2addrp = 0
         self.rank2addr = [0 for  y in range(self.maxpagenums)]
+        self.visitedback = [0 for  y in range(self.maxpagenums)]
         self.map2weakaddr = self.maxpagenums - 1
     def getlife2sorted(self):
         return self.life2sorted
@@ -154,6 +155,7 @@ class memorymodel:
         return 0
     def clear(self):
         for i in range(len(self.visitcount)):
+            self.visitedback[self.visitcount[i][0]] = self.visitcount[i][1]
             self.visitcount[i][1] = 0
     def access(self,addr_temp2):
 
@@ -176,7 +178,7 @@ class memorymodel:
             self.start = 1
             #print("remap begin")
             #self.totalcount = 0
-            visitsortedlist =sorted(self.visitcount, key = lambda x:x[1])
+            visitsortedlist = sorted(self.visitcount, key = lambda x:x[1])
             return (1, visitsortedlist, self.maplist)
             #print("remap end")
         elif self.totalcount % remapthreshold == 0:
@@ -245,6 +247,7 @@ class memorymodel:
                     if self.lifelist[self.maplist[visitsortedlist[vindex][0]]][1] < 0:
                         return (-1, visitsortedlist, self.maplist)
                 ###block1 end
+                self.visitedback[visitsortedlist[vindex][0]] = self.visitcount[visitsortedlist[vindex][0]][1]
                 self.visitcount[visitsortedlist[vindex][0]][1] = 0
                 self.maplist[visitsortedlist[vindex][0]] = lifenowlist[index][0]
                 self.reverselist[lifenowlist[index][0]] = visitsortedlist[vindex][0]
