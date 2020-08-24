@@ -125,9 +125,10 @@ class bloomfilter :
 
 
 class memorymodel:
-    def __init__(self, areasize, attacktype, no, areashift, randomenable,randomshift, reverseenable,stallenable,climbershift):
+    def __init__(self, areasize, attacktype, no, areashift, climberenable, randomenable,randomshift, reverseenable,stallenable,climbershift):
         self.maxpagenums = areasize
         self.climbershift = climbershift
+        self.climberenable = climberenable
         areanums = self.maxpagenums >> 10
         print('self.maxpagenums' + str(self.maxpagenums))
         self.attacktype = attacktype
@@ -149,10 +150,10 @@ class memorymodel:
         self.reverseenable = reverseenable
         self.stallenable = stallenable
         self.randompath = ['', 'random_']
-        self.reversepath = ['', 'reverse_']
+        self.climberpath = ['', 'climber_']
         self.stallpath = ['', 'stall_']
-        self.endlifepath = 'type' + str(self.attacktype)+'_bwlmm_climber_'+str(climbershift)+'_'+self.randompath[self.randomenable] + \
-                            self.reversepath[self.reverseenable]+self.stallpath[self.stallenable]+'endlife.dat'
+        self.endlifepath = 'type' + str(self.attacktype)+'_bwlmm_climber_'+str(climbershift)+'_'+self.climberpath[self.climberenable]+self.randompath[self.randomenable] + \
+                            self.stallpath[self.stallenable]+'endlife.dat'
         self.lifelist = [[0,0] for y in range(len(x))]
         self.lifelist2 = [[0,0] for y in range(len(x))]
         self.sortednow = [0 for  y in range(len(x))]
@@ -212,7 +213,7 @@ class memorymodel:
         addr= self.maplist[addr_temp]
         localclimbethreshold = self.climberlocthre[addr]
         maxup = 0
-        if counterv % (localclimbethreshold) == 0:
+        if (counterv % (localclimbethreshold) == 0) and (self.climberenable == 1):
             randommax = 1<<self.climbershift
             climberareaindex = self.climbla2hot[addr_temp] >> self.climbershift
             targetindex = climberareaindex

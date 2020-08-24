@@ -14,9 +14,10 @@ climbethreshold = 10
 
 ##################################
 class memorymodel:
-    def __init__(self, areasize, attacktype, no, areashift, randomenable, randomshift,reverseenable,stallenable,climbershift):
+    def __init__(self, areasize, attacktype, no, areashift, climberenable, randomenable, randomshift,reverseenable,stallenable,climbershift):
         self.maxpagenums = areasize
         self.climbershift = climbershift
+        self.climberenable = climberenable
         areanums = self.maxpagenums >> 10
         self.attacktype = attacktype
         print('maxpagenums:' + str(self.maxpagenums))
@@ -28,10 +29,10 @@ class memorymodel:
         self.stallenable = stallenable
         self.life2sorted = [0 for x in range(self.maxpagenums)]
         self.randompath = ['', 'random_']
-        self.reversepath = ['', 'reverse_']
+        self.climberpath = ['', 'climber_']
         self.stallpath = ['', 'stall_']
-        self.endlifepath = 'type' + str(self.attacktype)+'_idealmm_climber_'+str(climbershift)+'_'+self.randompath[self.randomenable] + \
-                            self.reversepath[self.reverseenable]+self.stallpath[self.stallenable]+'endlife.dat'
+        self.endlifepath = 'type' + str(self.attacktype)+'_idealmm_climber_'+str(climbershift)+'_'+self.climberpath[self.climberenable]+self.randompath[self.randomenable] + \
+                            self.stallpath[self.stallenable]+'endlife.dat'
         np.random.seed(0)
         print("gen life distribution begin")
         p = np.random.normal(loc = mu, scale = sigma, size = 2*areanums)
@@ -100,7 +101,7 @@ class memorymodel:
         addr= self.maplist[addr_temp]
         localclimbethreshold = self.climberlocthre[addr]
         maxup = 0
-        if counterv % (localclimbethreshold) == 0:
+        if (counterv % (localclimbethreshold) == 0) and (self.climberenable == 1):
             #step = int(counterv / localclimbethreshold)
             randommax = 1<<self.climbershift
             climberareaindex = self.climbla2hot[addr_temp] >> self.climbershift
