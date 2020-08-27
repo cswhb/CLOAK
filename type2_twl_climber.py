@@ -12,14 +12,14 @@ endlifepath = 'endlife.dat'
 initlifepath = 'initlife.dat'
 areashift = 0 
 maxpagenums = (4194304>>2) >> areashift
-isbreak = 0###结束标志
+isbreak = 0
 attacktype = 2
 filelength = 0
 pageshift = 12
 attackpp = 1
 endnums = 200001000
 climbershift = 17
-attacksize = 1024
+attacksize = 1
 ##########################################################
 class AcListGenerator:
     def __init__(self, type1, areasize, attackpp,climberenable, randomenable, stallenable):

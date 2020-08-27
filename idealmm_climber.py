@@ -215,7 +215,7 @@ class memorymodel:
             for i in range(len(visitsortedlist)):
                 if visitsortedlist[len(visitsortedlist) - 1 - i][1] == 0 and zeropoint < len(visitsortedlist) - 1 - i:
                     zeropoint = len(visitsortedlist) - 1 - i
-                #block1 start 这里是考虑交换开销
+                #block1 start
                 if isswap == 1:
                     #index = i
                     index = len(visitsortedlist) - 1 - i

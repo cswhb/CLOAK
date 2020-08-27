@@ -6,13 +6,13 @@ import sys
 ##############################
 ##############################
 tracepath = 'trace.dat'
-endstatpath = 'wendstat.dat'
+endstatpath = 'endstat.dat'
 logpath = 'log.dat'
 endlifepath = 'endlife.dat'
 initlifepath = 'initlife.dat'
-areashift = 0 #4kB 粒度
+areashift = 0 
 maxpagenums = (4194304>>2) >> areashift 
-isbreak = 0###结束标志
+isbreak = 0
 attacktype = 2
 filelength = 0
 pageshift = 12

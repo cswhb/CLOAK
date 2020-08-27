@@ -223,7 +223,7 @@ class memorymodel:
                 maxup = self.maxpagenums
             else:
                 maxup = (self.climberpoint + 1) <<  self.climbershift
-            if climberareaindex == self.climberpoint: ###当前位置+1
+            if climberareaindex == self.climberpoint: ##
                 hotrandomaddr = random.randint(1, (1<<self.climbershift) - 1)
                 targetaddr = self.sortednow[(self.climbla2hot[addr_temp] + hotrandomaddr) % (1<<self.climbershift) + (maxup - (1<<self.climbershift))]
             else:
@@ -355,7 +355,7 @@ class memorymodel:
             for noindex2  in range (len(self.bloomfilter2.addr2hot)):
                 #print('noindex2：%d'%(noindex2))
                 if self.bloomfilter2.addr2hot[noindex2] == -1:
-                    for listindex1 in range (len(rank2[0])):#####map2号中的冷组
+                    for listindex1 in range (len(rank2[0])):##
                         #print('-1noindex2：%d'%(noindex2))
                         for noinde1 in range(len(rank1[noindex2][listindex1])):
                             if rank1[noindex2][listindex1][noinde1] != -1:
@@ -385,7 +385,7 @@ class memorymodel:
                                 #self.life2sorted[bemapaddr] = len(self.sortedlist) - 1 - mapindex
                                 mapindex = mapindex + 1 
             #print(mapindex)
-            for index3 in range(len(self.bloomfilter1.addr2hot)):#remap 冷页
+            for index3 in range(len(self.bloomfilter1.addr2hot)):#
                 if self.bloomfilter1.addr2hot[index3] == -1:
                     bemapaddr = index3
                     if isswap == 1:
