@@ -4,7 +4,7 @@ import numpy as np
 import math
 
 
-tracepath = 'whb_trace.dat'
+tracepath = 'trace.dat'
 ##############################
 ##############################
 pageshift = 12
