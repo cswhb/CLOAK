@@ -13,7 +13,7 @@ par1threshold = 0
 par2threshold = 0
 #################### end
 #######################random begin
-randomshift = 10
+randomshift = 17
 randomenable = 0
 ######################random end
 class DefenseLayer:

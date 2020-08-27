@@ -18,7 +18,7 @@ filelength = 0
 pageshift = 12
 attackpp = 1
 endnums = 200001000
-climbershift = 10
+climbershift = 17
 attacksize = 1024
 ##########################################################
 class AcListGenerator:

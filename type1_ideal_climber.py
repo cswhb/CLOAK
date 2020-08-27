@@ -15,7 +15,7 @@ maxpagenums = (4194304 >> 2) >> areashift #4GB
 isbreak = 0#
 attacktype = 1
 attackpp = 1
-climbershift = 10
+climbershift = 17
 endnums = 200001000 #
 attacknums = 0#
 ##########################################################

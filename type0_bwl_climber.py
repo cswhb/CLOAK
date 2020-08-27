@@ -14,7 +14,7 @@ isbreak = 0#
 attacktype = 0
 attackpp = 1
 endnums = 200001000
-climbershift = 10
+climbershift = 17
 ##########################################################
 class AcListGenerator:
     def __init__(self, type1, areasize, attackpp,climberenable, randomenable, stallenable):

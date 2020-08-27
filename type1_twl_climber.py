@@ -16,7 +16,7 @@ isbreak = 0###结束标志
 attacktype = 1
 attackpp = 1
 bwlsize = 0
-climbershift = 10
+climbershift = 17
 endnums = 200001000 
 attacknums = 0#
 ##########################################################

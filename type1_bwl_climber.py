@@ -17,7 +17,7 @@ attacktype = 1
 attackpp = 1
 bwlsize = 0
 endnums = 200001000 ##
-climbershift = 10
+climbershift = 17
 attacknums = 0##
 ##########################################################
 class AcListGenerator:
